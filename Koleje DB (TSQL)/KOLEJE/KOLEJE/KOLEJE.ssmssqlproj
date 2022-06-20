@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="KOLEJE">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="TOMEK-LAPTOP:TOMEK-LAPTOP\SaySaeqo">
+          <Created>2021-01-04T13:05:28.4394432+01:00</Created>
+          <Type>SQL</Type>
+          <Server>TOMEK-LAPTOP</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="CascadeOperations.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CascadeOperations.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateAllTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CreateAllTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DeleteAllTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DeleteAllTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="InsertValues.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>InsertValues.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Kursy_delete.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Kursy_delete.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Kursy_update.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Kursy_update.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Odcinki_kursow_delete.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Odcinki_kursow_delete.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Odcinki_kursow_update.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Odcinki_kursow_update.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Odcinki_tras_delete.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Odcinki_tras_delete.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Odcinki_tras_update.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Odcinki_tras_update.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Pociagi_delete.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Pociagi_delete.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Pociagi_update.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Pociagi_update.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Stacje_delete.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Stacje_delete.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Trigger_Stacje_update.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Trigger_Stacje_update.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ZAD3 _wsiadajacy_wysiadajcy.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ZAD3 _wsiadajacy_wysiadajcy.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ZAD3_Create_Pociagi_czas_podrozy.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ZAD3_Create_Pociagi_czas_podrozy.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ZAD3_Create_view_kurs_informacje.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ZAD3_Create_view_kurs_informacje.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ZAD3_Create_view_P_czas_podrozy.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ZAD3_Create_view_P_czas_podrozy.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ZAD3_kurs_GDY-KAT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ZAD3_kurs_GDY-KAT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ZAD3_kursy_przychod.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ZAD3_kursy_przychod.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ZAD3_najbardziej eksploatowany_pociag.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ZAD3_najbardziej eksploatowany_pociag.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ZAD3_policja.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:TOMEK-LAPTOP:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>TOMEK-LAPTOP</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ZAD3_policja.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
