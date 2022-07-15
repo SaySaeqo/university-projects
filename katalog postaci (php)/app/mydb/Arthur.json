@@ -1,0 +1,14 @@
+{
+    "image": "\/app\/images\/Arthur.png",
+    "name": "Arthur",
+    "color": "#666666",
+    "location": "Ca-elum",
+    "appearance": "Wysoki m\u0119\u017cczyzna o ca\u0142kiem przystojnej twarzy i przyci\u0105gaj\u0105cych zielonych oczach. Spod jego szarego p\u0142aszczu mo\u017cna dostrzec porz\u0105dne i czyste ubranie. Zadbane w\u0142osy \u015bredniej d\u0142ugo\u015bci zaczesane ma do ty\u0142u. Mo\u017cna odnie\u015b\u0107 wra\u017cenie, \u017ce jest to po prostu jaki\u015b dobrze usytuowany moczymorda przystawiaj\u0105cy si\u0119 do ka\u017cdej panny w zasi\u0119gu wzroku. W rzeczywisto\u015bci jest zupe\u0142nie odwrotnie.",
+    "strength": "30",
+    "endurance": "25",
+    "speed": "60",
+    "reaction": "60",
+    "magic_energy_control": "",
+    "concentration": "",
+    "magic": ""
+}

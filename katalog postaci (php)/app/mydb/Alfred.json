@@ -1,0 +1,14 @@
+{
+    "image": "\/app\/images\/Alfred.png",
+    "name": "Alfred",
+    "color": "#a14700",
+    "location": "Ca-elum",
+    "appearance": "24 lata, 174 cm, kr\u00f3tkie w\u0142osy br\u0105zowe w\u0142osy i taka\u017c te\u017c broda. Zwyk\u0142y moczymorda, te\u017c poszukiwacz przyg\u00f3d, podr\u00f3\u017cnik. Zna si\u0119 na survivalu. Przyjaciel Arthura z dawnych lat. Preferuje ostro\u017cne dzia\u0142anie i dobry plan ponad gwa\u0142towno\u015b\u0107 i atak z wyprzedzeniem. O ile oczywi\u015bcie mu zale\u017cy, a zazwyczaj nie zale\u017cy i upija si\u0119 do nieprzytomno\u015bci przychodz\u0105c na zlecenia w stanie nie pe\u0142nej trze\u017awo\u015bci. Zna si\u0119 na walce tarcz\u0105 i w\u0142\u00f3czni\u0105, ale nie ma \u017cadnych przy sobie. Ma za to no\u017ce, tak z osiem. I du\u017co zegark\u00f3w, kt\u00f3rymi handluje.",
+    "strength": "50",
+    "endurance": "40",
+    "speed": "70",
+    "reaction": "35",
+    "magic_energy_control": "",
+    "concentration": "",
+    "magic": ""
+}

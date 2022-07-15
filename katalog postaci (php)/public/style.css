@@ -1,0 +1,186 @@
+body{
+    background-color: rgb(16 0 17);
+    font-size: 14px;
+    font-style: normal;
+    color: #ccc;
+    font-family: 'Noto Sans',sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+main, form {
+    background: rgb(48,30,56);
+    border: rgb(88,50,112) 1px solid;
+    padding: 10px 15px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    width: 90%;
+}
+
+form{
+    min-width: 50%;
+}
+
+.select {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.select > form{
+    min-width: 0;
+    width: fit-content;
+    height: fit-content;
+    padding: 2px;
+    margin-top: -1px;
+    margin-bottom: 0;
+    margin-left: -1px;
+}
+
+.select img{
+    opacity: 0.5;
+    height: 150px;
+    width: auto;
+}
+.select img:hover{
+    opacity: 1.0;
+    cursor: pointer;
+}
+
+.select button{
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#view {
+    max-height: 80%;
+    min-height: 300px;
+    background-color: #414141;
+    border: 2px solid #828282;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#view > img{
+    max-height: 350px;
+    width: auto;
+}
+
+
+#view .description{
+    height: 100%;
+    flex-grow: 1;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+button.copy {
+    height: 20px;
+    margin: 0;
+    margin-left: 15px;
+    width: fit-content;
+    padding: 0;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    display: flex;
+}
+button.copy span{
+    margin-left: 13px;
+}
+
+button.copy:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+button.copy img{
+    width: 14px;
+    height: 14px;
+    margin-left: 13px;
+    margin-right: 13px;
+}
+
+.description > button.copy{
+    margin: 0;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="number"]{
+    width: 50px;
+}
+
+textarea{
+    width: 80%;
+    height: 80px;
+}
+
+#new-entry {
+    opacity: 0.3;
+}
+
+#new-entry:focus-within, #new-entry:hover{
+    opacity: 1.0;
+}
+
+#new-entry label{
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+input{
+    height: 20px;
+}
+
+.description p {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 5px;
+    text-indent: 1em;
+    /* display: inline-block; */
+    display: flex;
+    white-space: pre-line;
+    text-align: justify;
+}
+
+/* .description p::first-letter {
+    font-size: 21px;
+} Working only with display: inline-block in .description p */ 
+
+.description p.big {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+main > form{
+    align-items: flex-start;
+}
+
+a{
+    color: inherit; 
+    text-decoration: inherit;
+}

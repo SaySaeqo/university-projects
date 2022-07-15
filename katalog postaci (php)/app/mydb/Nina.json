@@ -1,0 +1,14 @@
+{
+    "image": "\/app\/images\/Nina.png",
+    "name": "Nina",
+    "color": "#cc99ff",
+    "location": "Ca-elum",
+    "appearance": "27 lat, 162 cm, drobna, lecz wyrze\u017abiona, d\u0142ugie ciemne w\u0142osy splecione w warkocz, nie wyr\u00f3\u017cniaj\u0105ca si\u0119 twarz, nie maluje si\u0119, stara si\u0119 nie wyr\u00f3\u017cnia\u0107, nosi ciemne wygodne ubrania, \u0142ata na lewej nodze w kolorze ciemnego granatu\r\nNina umie trzyma\u0107 j\u0119zyk za z\u0119bami, gdy trzeba. Jednak lubi te\u017c dopiec s\u0142owami rywalowi, je\u015bli czuje, \u017ce jest na zwyci\u0119skiej pozycji. Nie podejmuje zb\u0119dnego ryzyka, ale jest lojalna i zawsze stara si\u0119 doprowadza\u0107 do ko\u0144ca swoje misje.\r\nShinobi niezrzeszony. Wynaj\u0119ta przez hrabiego Silv\u0119, kt\u00f3ry nie lubi si\u0119 ani z Liegtem ani z Dijikiem. Jest szpiegiem na us\u0142ugach frakcji przeciwnej misji uratowania Asthora.\r\nJej styl walki polega na szybkim ataku ostr\u0105 broni\u0105 i wycofaniu si\u0119.\r\nZazwyczaj atakuje z zaskoczenia, a potem, w miar\u0119 mo\u017cliwo\u015bci usuwa si\u0119 w cie\u0144 tak szybko jak potrafi. Ca\u0142kiem nie\u017ale pos\u0142uguje si\u0119 te\u017c no\u017cami do rzucania aka kunai.",
+    "strength": "5",
+    "endurance": "20",
+    "speed": "140",
+    "reaction": "70",
+    "magic_energy_control": "",
+    "concentration": "",
+    "magic": ""
+}
