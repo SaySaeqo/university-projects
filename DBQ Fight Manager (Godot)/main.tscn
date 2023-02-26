@@ -1,0 +1,1815 @@
+[gd_scene load_steps=48 format=2]
+
+[ext_resource path="res://images/background.png" type="Texture" id=1]
+[ext_resource path="res://images/right_arrow.png" type="Texture" id=2]
+[ext_resource path="res://images/sidelook.png" type="Texture" id=3]
+[ext_resource path="res://TokenCluster.tscn" type="PackedScene" id=4]
+[ext_resource path="res://images/psi_token.png" type="Texture" id=5]
+[ext_resource path="res://images/mana_token.png" type="Texture" id=6]
+[ext_resource path="res://images/ki_token.png" type="Texture" id=7]
+[ext_resource path="res://images/fatigue_token.png" type="Texture" id=8]
+[ext_resource path="res://images/sword.png" type="Texture" id=9]
+[ext_resource path="res://images/shield.png" type="Texture" id=10]
+[ext_resource path="res://scripts/TextEditor.gd" type="Script" id=11]
+[ext_resource path="res://scripts/SideBar.gd" type="Script" id=12]
+[ext_resource path="res://images/avatar.png" type="Texture" id=13]
+[ext_resource path="res://scripts/main.gd" type="Script" id=14]
+[ext_resource path="res://scripts/ActionLeft.gd" type="Script" id=15]
+[ext_resource path="res://others/my_theme.tres" type="Theme" id=16]
+[ext_resource path="res://scripts/HpBar.gd" type="Script" id=17]
+[ext_resource path="res://scripts/ActionList.gd" type="Script" id=18]
+[ext_resource path="res://ActionItem.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scripts/TurnIndicators.gd" type="Script" id=20]
+[ext_resource path="res://images/blood_tear.png" type="Texture" id=21]
+[ext_resource path="res://images/sweat_tear.png" type="Texture" id=22]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=23]
+[ext_resource path="res://scripts/ActionAddForm.gd" type="Script" id=24]
+[ext_resource path="res://others/organic-teabags-font/OrganicTeabags-69zM.ttf" type="DynamicFontData" id=25]
+[ext_resource path="res://PlusMinusBlock.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scripts/NewBattleForm.gd" type="Script" id=27]
+[ext_resource path="res://images/pen_and_paper.png" type="Texture" id=28]
+[ext_resource path="res://images/bed.png" type="Texture" id=29]
+[ext_resource path="res://images/gear.png" type="Texture" id=30]
+[ext_resource path="res://scripts/SettingButton.gd" type="Script" id=31]
+[ext_resource path="res://images/unchecked.png" type="Texture" id=32]
+[ext_resource path="res://images/checked.png" type="Texture" id=33]
+
+[sub_resource type="Animation" id=1]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.95 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemy:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.95 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 700, 430 ), Vector2( 800, 350 ), Vector2( 830, 450 ), Vector2( 850, 430 ), Vector2( 820, 430 ), Vector2( 720, 400 ), Vector2( 700, 430 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 15.2, -15.9, 31.3, -40.1, 0.0 ]
+}
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="InputEventKey" id=4]
+control = true
+command = true
+pressed = true
+scancode = 69
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
+
+[sub_resource type="Animation" id=6]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -458, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Button/TextureRect:rect_scale")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -458, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Button/TextureRect:rect_scale")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 36
+font_data = ExtResource( 25 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 1, 0.913725, 0.619608, 0.572549 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="MainWindow" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 1
+theme = ExtResource( 16 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="TextureRect" parent="."]
+margin_left = 700.0
+margin_top = 430.0
+margin_right = 828.0
+margin_bottom = 686.001
+rect_pivot_offset = Vector2( 64, 256 )
+hint_tooltip = "Zmiana dystansu (Daleki, Bliski, Bezpośredni)"
+mouse_default_cursor_shape = 2
+texture = ExtResource( 3 )
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+distance = "Bliski"
+
+[node name="Enemy" type="TextureRect" parent="."]
+self_modulate = Color( 0.576471, 0.576471, 0.576471, 1 )
+margin_left = 970.0
+margin_top = 430.0
+margin_right = 1180.0
+margin_bottom = 686.0
+rect_pivot_offset = Vector2( 64.0001, 256 )
+mouse_filter = 0
+texture = ExtResource( 3 )
+flip_h = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 1071.0
+margin_top = 429.0
+margin_right = 1135.0
+margin_bottom = 561.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+hint_tooltip = "Ikona zranienia"
+toggle_mode = true
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer"]
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 132.0
+hint_tooltip = "Ikona zmęczenia"
+toggle_mode = true
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bounce"
+anims/bounce = SubResource( 1 )
+anims/fight = SubResource( 2 )
+
+[node name="HpBar" type="ProgressBar" parent="." groups=["refreshable"]]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -321.0
+margin_top = -200.0
+margin_right = 337.0
+margin_bottom = -119.0
+hint_tooltip = "Pasek zdrowia"
+value = 50.0
+allow_greater = true
+allow_lesser = true
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HpBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Currenthp" type="LineEdit" parent="HpBar/HBoxContainer"]
+visible = false
+margin_left = 376.0
+margin_right = 592.0
+margin_bottom = 81.0
+custom_styles/focus = SubResource( 3 )
+text = "cur"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Maxhp" type="LineEdit" parent="HpBar/HBoxContainer"]
+visible = false
+margin_left = 486.0
+margin_right = 702.0
+margin_bottom = 81.0
+mouse_filter = 2
+custom_colors/font_color_uneditable = Color( 0.843137, 0.843137, 0.843137, 1 )
+text = "max"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fatigue" parent="." groups=["editable", "refreshable"] instance=ExtResource( 4 )]
+margin_left = 1291.0
+margin_top = 844.634
+margin_right = 1553.0
+margin_bottom = 966.63
+hint_tooltip = "Tokeny zmęczenia"
+tokens = 6
+token_image = ExtResource( 8 )
+
+[node name="Psi" parent="." groups=["editable", "refreshable"] instance=ExtResource( 4 )]
+margin_left = 226.0
+margin_top = 465.036
+margin_right = 488.0
+margin_bottom = 587.036
+hint_tooltip = "Tokeny Psi"
+tokens = 3
+token_image = ExtResource( 5 )
+
+[node name="Mana" parent="." groups=["editable", "refreshable"] instance=ExtResource( 4 )]
+margin_left = 112.0
+margin_top = 596.0
+margin_right = 374.0
+margin_bottom = 718.0
+hint_tooltip = "Tokeny Many"
+tokens = 2
+token_image = ExtResource( 6 )
+
+[node name="Ki" parent="." groups=["editable", "refreshable"] instance=ExtResource( 4 )]
+margin_left = 254.0
+margin_top = 810.0
+margin_right = 516.0
+margin_bottom = 932.0
+hint_tooltip = "Tokeny Ki"
+tokens = 2
+token_image = ExtResource( 7 )
+
+[node name="Stamina" parent="." groups=["editable", "refreshable"] instance=ExtResource( 4 )]
+margin_left = 112.0
+margin_top = 911.634
+margin_right = 374.0
+margin_bottom = 1033.63
+hint_tooltip = "Tokeny Staminy"
+tokens = 4
+
+[node name="TurnIndicators" type="ToolButton" parent="." groups=["editable"]]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -309.0
+margin_top = 37.0
+margin_right = -51.0
+margin_bottom = 246.0
+hint_tooltip = "Identyfikator fazy tury (obrona/atak lub atak)"
+disabled = true
+action_mode = 0
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Defense" type="Control" parent="TurnIndicators"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TurnIndicators/Defense"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 16.4814
+margin_top = -97.9865
+margin_right = 144.481
+margin_bottom = 74.0135
+mouse_filter = 2
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TurnIndicators/Defense"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 91.0188
+margin_top = -79.0424
+margin_right = 99.0188
+margin_bottom = 130.958
+rect_rotation = 48.0367
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="TurnIndicators/Defense"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -127.942
+margin_top = -24.5694
+margin_right = 0.0579834
+margin_bottom = 147.431
+mouse_filter = 2
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Control" parent="TurnIndicators"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TextureRect2" type="TextureRect" parent="TurnIndicators/Attack"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 126.722, 100.387 )
+mouse_filter = 2
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AllActionsButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -319.0
+margin_top = 65.0
+margin_right = 337.0
+margin_bottom = 167.0
+mouse_default_cursor_shape = 2
+text = "Wszystkie akcje"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SummaryButton" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -319.0
+margin_top = 65.0
+margin_right = 337.0
+margin_bottom = 167.0
+mouse_default_cursor_shape = 2
+text = "Podsumowanie"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ActionLeft" type="HBoxContainer" parent="." groups=["editable", "refreshable"]]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -371.0
+margin_top = 193.0
+margin_right = 388.0
+margin_bottom = 289.0
+hint_tooltip = "Pozostałe akcje do wykorzystania w turze"
+focus_mode = 2
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Point" type="HBoxContainer" parent="ActionLeft"]
+margin_right = 104.0
+margin_bottom = 96.0
+mouse_filter = 2
+
+[node name="ReferenceRect" type="ReferenceRect" parent="ActionLeft/Point"]
+margin_right = 50.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ActionLeft/Point"]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+color = Color( 0.345098, 0.345098, 0.345098, 1 )
+
+[node name="Editable" type="HBoxContainer" parent="ActionLeft"]
+visible = false
+margin_left = 108.0
+margin_right = 389.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="ActionLeft/Editable"]
+margin_top = 7.0
+margin_right = 61.0
+margin_bottom = 88.0
+text = " x "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="ActionLeft/Editable"]
+margin_left = 65.0
+margin_right = 281.0
+margin_bottom = 96.0
+text = "4"
+
+[node name="SideBar" type="ColorRect" parent="."]
+margin_left = -458.0
+margin_right = 87.0
+margin_bottom = 1050.0
+rect_min_size = Vector2( 523, 1050 )
+color = Color( 0.905882, 0.905882, 0.905882, 1 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="SideBar"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -525.0
+margin_right = -2.0
+margin_bottom = 525.0
+rect_scale = Vector2( -1, 1 )
+rect_pivot_offset = Vector2( 43.5, 520 )
+mouse_default_cursor_shape = 2
+action_mode = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SideBar/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -70.0
+margin_right = 18.0
+margin_bottom = 64.0
+rect_scale = Vector2( -1, 1 )
+rect_pivot_offset = Vector2( 64, 67 )
+mouse_filter = 2
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar" type="TextureRect" parent="SideBar"]
+margin_left = 45.0
+margin_top = 37.0
+margin_right = 301.0
+margin_bottom = 293.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Character" type="TextureRect" parent="SideBar"]
+margin_left = 300.899
+margin_top = 37.4577
+margin_right = 428.899
+margin_bottom = 293.458
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="SideBar"]
+anchor_right = 1.0
+margin_left = 23.0
+margin_top = 318.0
+margin_right = -111.0
+margin_bottom = 766.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="SideBar"]
+anchor_right = 1.0
+margin_left = 42.0
+margin_top = 325.0
+margin_right = -111.0
+margin_bottom = 761.0
+custom_constants/vseparation = -10
+custom_constants/hseparation = -40
+columns = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BodyWord" type="LineEdit" parent="SideBar/GridContainer"]
+margin_right = 216.0
+margin_bottom = 81.0
+mouse_filter = 2
+text = "Ciało:"
+editable = false
+
+[node name="BodyValue" type="LineEdit" parent="SideBar/GridContainer" groups=["editable"]]
+margin_left = 176.0
+margin_right = 392.0
+margin_bottom = 81.0
+text = "5"
+align = 1
+editable = false
+
+[node name="EnergyWord" type="LineEdit" parent="SideBar/GridContainer"]
+margin_top = 71.0
+margin_right = 216.0
+margin_bottom = 152.0
+mouse_filter = 2
+text = "Energia:"
+editable = false
+
+[node name="EnergyValue" type="LineEdit" parent="SideBar/GridContainer" groups=["editable"]]
+margin_left = 176.0
+margin_top = 71.0
+margin_right = 392.0
+margin_bottom = 152.0
+text = "6"
+align = 1
+editable = false
+
+[node name="SpiritWord" type="LineEdit" parent="SideBar/GridContainer"]
+margin_top = 142.0
+margin_right = 216.0
+margin_bottom = 223.0
+mouse_filter = 2
+text = "Duch:"
+editable = false
+
+[node name="SpiritValue" type="LineEdit" parent="SideBar/GridContainer" groups=["editable"]]
+margin_left = 176.0
+margin_top = 142.0
+margin_right = 392.0
+margin_bottom = 223.0
+text = "3"
+align = 1
+editable = false
+
+[node name="WisdomWord" type="LineEdit" parent="SideBar/GridContainer"]
+margin_top = 213.0
+margin_right = 216.0
+margin_bottom = 294.0
+mouse_filter = 2
+text = "Umysł:"
+editable = false
+
+[node name="WisdomValue" type="LineEdit" parent="SideBar/GridContainer" groups=["editable"]]
+margin_left = 176.0
+margin_top = 213.0
+margin_right = 392.0
+margin_bottom = 294.0
+text = "12"
+align = 1
+editable = false
+
+[node name="SizeWord" type="LineEdit" parent="SideBar/GridContainer"]
+margin_top = 284.0
+margin_right = 216.0
+margin_bottom = 365.0
+mouse_filter = 2
+text = "R:"
+editable = false
+
+[node name="SizeValue" type="LineEdit" parent="SideBar/GridContainer" groups=["editable"]]
+margin_left = 176.0
+margin_top = 284.0
+margin_right = 392.0
+margin_bottom = 365.0
+text = "8"
+align = 1
+editable = false
+
+[node name="PPWord" type="LineEdit" parent="SideBar/GridContainer"]
+margin_top = 355.0
+margin_right = 216.0
+margin_bottom = 436.0
+mouse_filter = 2
+text = "PP:"
+editable = false
+
+[node name="PPValue" type="LineEdit" parent="SideBar/GridContainer" groups=["editable"]]
+margin_left = 176.0
+margin_top = 355.0
+margin_right = 392.0
+margin_bottom = 436.0
+text = "1"
+align = 1
+editable = false
+
+[node name="RestButton" type="Button" parent="SideBar"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = -247.0
+margin_right = 118.0
+margin_bottom = -156.0
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SideBar/RestButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 29 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditButton" type="Button" parent="SideBar"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = -131.0
+margin_right = 118.0
+margin_bottom = -40.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+shortcut = SubResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SideBar/EditButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SideBar"]
+anims/sidebar_enter = SubResource( 6 )
+anims/sidebar_exit = SubResource( 7 )
+
+[node name="NewTurnButton" type="Button" parent="SideBar"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -408.586
+margin_top = -246.0
+margin_right = -113.586
+margin_bottom = -155.0
+text = "Nowa tura"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewBattleButton" type="Button" parent="SideBar"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -408.586
+margin_top = -131.0
+margin_right = -113.586
+margin_bottom = -40.0
+text = "Nowa bitwa"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingButton" type="Button" parent="SideBar" groups=["editable"]]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -90.0
+margin_top = -91.0
+margin_right = 4.0
+hint_tooltip = "Już wkrótce..."
+mouse_default_cursor_shape = 2
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SideBar/SettingButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionList" type="ColorRect" parent="." groups=["editable"]]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1055.0
+margin_right = -2.0
+color = Color( 0.905882, 0.905882, 0.905882, 1 )
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="LineEdit" parent="ActionList"]
+anchor_right = 1.0
+margin_left = 41.0
+margin_top = 37.0
+margin_right = -52.0011
+margin_bottom = 142.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Akcje"
+editable = false
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ActionList"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 41.0
+margin_top = -896.0
+margin_right = -42.0011
+margin_bottom = -43.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="ActionList"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -68.8811
+margin_top = 154.0
+margin_right = -40.8811
+margin_bottom = -43.0
+step = 1.0
+page = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ActionList"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -469.5
+margin_top = -876.0
+margin_right = 485.5
+margin_bottom = -55.0
+rect_min_size = Vector2( 400, 300 )
+follow_focus = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ActionList/ScrollContainer"]
+margin_right = 955.0
+margin_bottom = 668.0
+rect_pivot_offset = Vector2( -1985.52, 27.4235 )
+hint_tooltip = "Pozwala na zablokowanie jednego ciosu"
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dodge" parent="ActionList/ScrollContainer/VBoxContainer" instance=ExtResource( 19 )]
+margin_right = 955.0
+hint_tooltip = "Pozwala na uniknięcie jednego ataku"
+deletable = false
+action_name = "Unik"
+fatigue_cost = 1
+max_uses = 2
+
+[node name="Block" parent="ActionList/ScrollContainer/VBoxContainer" instance=ExtResource( 19 )]
+margin_top = 84.0
+margin_right = 955.0
+margin_bottom = 164.0
+hint_tooltip = "Pozawala za zablokowanie jednego ciosu"
+deletable = false
+action_name = "Blok"
+fatigue_cost = 1
+max_uses = 2
+
+[node name="ActionItem2" parent="ActionList/ScrollContainer/VBoxContainer" instance=ExtResource( 19 )]
+margin_top = 168.0
+margin_right = 955.0
+margin_bottom = 248.0
+hint_tooltip = "Zwykly atak fizyczny"
+deletable = false
+action_name = "Cios zwykły"
+attack_phase = true
+
+[node name="ActionItem3" parent="ActionList/ScrollContainer/VBoxContainer" instance=ExtResource( 19 )]
+margin_top = 252.0
+margin_right = 955.0
+margin_bottom = 332.0
+hint_tooltip = "Dostępny tylko z dystansu: Bezpośredni"
+deletable = false
+action_name = "Chwyt"
+attack_phase = true
+
+[node name="ActionItem4" parent="ActionList/ScrollContainer/VBoxContainer" instance=ExtResource( 19 )]
+margin_top = 336.0
+margin_right = 955.0
+margin_bottom = 416.0
+hint_tooltip = "Wyzwolenie z chwytu i zmiana dystansu: Bezpośredni -> Bliski lub Bezpośredni -> Daleki"
+deletable = false
+action_name = "Wyzwolenie"
+
+[node name="ActionItem5" parent="ActionList/ScrollContainer/VBoxContainer" instance=ExtResource( 19 )]
+margin_top = 420.0
+margin_right = 955.0
+margin_bottom = 500.0
+hint_tooltip = "Hum hum hum, gadka szmatka"
+deletable = false
+action_name = "Rozmowa(vs NPC)"
+
+[node name="ActionItem6" parent="ActionList/ScrollContainer/VBoxContainer" instance=ExtResource( 19 )]
+margin_top = 504.0
+margin_right = 955.0
+margin_bottom = 584.0
+hint_tooltip = "Zmiana dystansu Bliski->Daleki lub Daleki->Bliski"
+deletable = false
+action_name = "Ruch"
+
+[node name="ActionItem7" parent="ActionList/ScrollContainer/VBoxContainer" instance=ExtResource( 19 )]
+margin_top = 588.0
+margin_right = 955.0
+margin_bottom = 668.0
+hint_tooltip = "Rzucamy czymś, by zaatakować bez zbliżania się"
+deletable = false
+action_name = "Rzut obiektem"
+
+[node name="Button" type="Button" parent="ActionList/ScrollContainer/VBoxContainer"]
+visible = false
+margin_left = 755.0
+margin_top = 420.0
+margin_right = 955.0
+margin_bottom = 511.0
+rect_min_size = Vector2( 200, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Dodaj"
+
+[node name="ActionAddForm" type="ColorRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1055.0
+color = Color( 0.905882, 0.905882, 0.905882, 1 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="LineEdit" parent="ActionAddForm"]
+anchor_right = 1.0
+margin_left = 41.0
+margin_top = 37.0
+margin_right = -52.0011
+margin_bottom = 142.0
+text = "Dodaj nową akcje/umiejętność"
+editable = false
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ActionAddForm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 77.0
+margin_top = 154.0
+margin_right = -71.0
+margin_bottom = -54.0
+follow_focus = true
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="ActionAddForm/ScrollContainer"]
+margin_bottom = 1042.0
+rect_min_size = Vector2( 0, 1042 )
+mouse_filter = 2
+
+[node name="NameWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 4.0
+margin_right = 220.0
+margin_bottom = 81.0
+text = "Nazwa"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameValue" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 232.0
+margin_right = 888.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 4.0
+margin_top = 100.0
+margin_right = 220.0
+margin_bottom = 181.0
+text = "Opis"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionValue" type="TextEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 4.0
+margin_top = 206.0
+margin_right = 888.0
+margin_bottom = 433.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_top = 443.566
+margin_right = 216.0
+margin_bottom = 524.566
+text = "Koszt"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaminaWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_top = 541.0
+margin_right = 216.0
+margin_bottom = 622.0
+mouse_default_cursor_shape = 0
+text = "Stamina"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaminaValue" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control" groups=["editable"]]
+margin_left = 176.0
+margin_top = 541.0
+margin_right = 392.0
+margin_bottom = 622.0
+mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 9 )
+text = "0"
+align = 1
+
+[node name="KiWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 442.5
+margin_top = 541.0
+margin_right = 658.5
+margin_bottom = 622.0
+mouse_default_cursor_shape = 0
+text = "Ki"
+editable = false
+
+[node name="KiValue" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control" groups=["editable"]]
+margin_left = 618.5
+margin_top = 541.0
+margin_right = 834.5
+margin_bottom = 622.0
+mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 10 )
+text = "0"
+align = 1
+
+[node name="ManaWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_top = 635.0
+margin_right = 216.0
+margin_bottom = 716.0
+mouse_default_cursor_shape = 0
+text = "Mana"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaValue" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control" groups=["editable"]]
+margin_left = 176.0
+margin_top = 635.0
+margin_right = 392.0
+margin_bottom = 716.0
+mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 11 )
+text = "0"
+align = 1
+
+[node name="PsiWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 443.12
+margin_top = 635.0
+margin_right = 659.12
+margin_bottom = 716.0
+mouse_default_cursor_shape = 0
+text = "Psi"
+editable = false
+
+[node name="PsiValue" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control" groups=["editable"]]
+margin_left = 619.12
+margin_top = 635.0
+margin_right = 835.12
+margin_bottom = 716.0
+mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 12 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FatigueWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_top = 730.0
+margin_right = 230.0
+margin_bottom = 811.0
+rect_pivot_offset = Vector2( 685.509, -74.0497 )
+hint_tooltip = "Dodatkowe zmęczenie poza sumą zuużytych tokenów"
+mouse_default_cursor_shape = 0
+text = "Zmeczenie"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FatigueValue" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control" groups=["editable"]]
+margin_left = 230.12
+margin_top = 729.634
+margin_right = 446.12
+margin_bottom = 810.634
+rect_pivot_offset = Vector2( 509.509, -74.0497 )
+mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 12 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 472.12
+margin_top = 730.0
+margin_right = 688.12
+margin_bottom = 811.0
+rect_pivot_offset = Vector2( 685.509, -74.0497 )
+hint_tooltip = "Ilość punktów skuteczności bojowej potrzebnej do użycia umiejętności"
+mouse_default_cursor_shape = 0
+text = "Ilość akcji"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionValue" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control" groups=["editable"]]
+margin_left = 693.0
+margin_top = 730.0
+margin_right = 909.0
+margin_bottom = 811.0
+rect_pivot_offset = Vector2( 509.509, -74.0497 )
+mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddButton" type="Button" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 4.12
+margin_top = 935.634
+margin_right = 205.12
+margin_bottom = 1026.63
+text = "Dodaj"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 232.0
+margin_top = 935.634
+margin_right = 523.0
+margin_bottom = 1026.63
+text = "Zaniechaj"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnIndicators" type="ToolButton" parent="ActionAddForm/ScrollContainer/Control" groups=["editable"]]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 630.0
+margin_top = 832.0
+margin_right = 888.0
+margin_bottom = 1041.0
+disabled = true
+action_mode = 0
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Defense" type="Control" parent="ActionAddForm/ScrollContainer/Control/TurnIndicators"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ActionAddForm/ScrollContainer/Control/TurnIndicators/Defense"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 16.4814
+margin_top = -97.9865
+margin_right = 144.481
+margin_bottom = 74.0135
+mouse_filter = 2
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ActionAddForm/ScrollContainer/Control/TurnIndicators/Defense"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 91.0188
+margin_top = -79.0424
+margin_right = 99.0188
+margin_bottom = 130.958
+rect_rotation = 48.0367
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="ActionAddForm/ScrollContainer/Control/TurnIndicators/Defense"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -127.942
+margin_top = -24.5694
+margin_right = 0.0579834
+margin_bottom = 147.431
+mouse_filter = 2
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Control" parent="ActionAddForm/ScrollContainer/Control/TurnIndicators"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TextureRect2" type="TextureRect" parent="ActionAddForm/ScrollContainer/Control/TurnIndicators/Attack"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 126.722, 100.387 )
+mouse_filter = 2
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnRechargeWord" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control"]
+margin_top = 831.0
+margin_right = 312.0
+margin_bottom = 912.0
+rect_pivot_offset = Vector2( 685.509, -74.0497 )
+hint_tooltip = "Ilość punktów skuteczności bojowej potrzebnej do użycia umiejętności"
+mouse_default_cursor_shape = 0
+text = "Turn Recharge"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxUsesValue" type="LineEdit" parent="ActionAddForm/ScrollContainer/Control" groups=["editable"]]
+margin_left = 419.0
+margin_top = 831.0
+margin_right = 635.0
+margin_bottom = 912.0
+rect_pivot_offset = Vector2( 509.509, -74.0497 )
+mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 12 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="ActionAddForm/ScrollContainer/Control"]
+margin_left = 321.682
+margin_top = 828.008
+margin_right = 459.682
+margin_bottom = 966.008
+rect_scale = Vector2( 0.629292, 0.629292 )
+custom_icons/checked = ExtResource( 33 )
+custom_icons/unchecked = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warning" type="TextEdit" parent="ActionAddForm/ScrollContainer/Control"]
+visible = false
+margin_left = 4.12
+margin_top = 870.0
+margin_right = 582.12
+margin_bottom = 930.0
+rect_pivot_offset = Vector2( 0, 60.366 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/number_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_readonly = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 14 )
+custom_styles/normal = SubResource( 13 )
+text = "	Wymagane jest podanie nazwy."
+readonly = true
+
+[node name="VScrollBar" type="VScrollBar" parent="ActionAddForm"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -69.0
+margin_top = 154.0
+margin_right = -41.0
+margin_bottom = -52.0
+mouse_default_cursor_shape = 2
+max_value = 800.0
+step = 10.0
+page = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEditor" type="ColorRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -563.0
+margin_top = -408.0
+margin_right = 636.0
+margin_bottom = 436.0
+color = Color( 0.905882, 0.905882, 0.905882, 1 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionName" type="LineEdit" parent="TextEditor"]
+anchor_right = 1.0
+margin_left = 41.0
+margin_top = 37.0
+margin_right = -42.0
+margin_bottom = 137.0
+text = "Akcja"
+editable = false
+caret_blink = true
+
+[node name="TextEdit" type="TextEdit" parent="TextEditor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -558.0
+margin_top = 137.0
+margin_right = 558.0
+margin_bottom = 698.0
+text = "	Tutaj fragment posta wykorzystujący tę akcję."
+syntax_highlighting = true
+draw_tabs = true
+wrap_enabled = true
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OkButton" type="Button" parent="TextEditor"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 41.0
+margin_top = -115.0
+margin_right = 245.0
+margin_bottom = -24.0
+hint_tooltip = "Kliknij, by użyć wybranej akcji i zaaplikować jej koszta"
+mouse_default_cursor_shape = 2
+text = "Ok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="TextEditor"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -395.0
+margin_top = -115.0
+margin_right = -42.0
+margin_bottom = -24.0
+mouse_default_cursor_shape = 2
+text = "Zaniechaj"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndOfTurn" type="ColorRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -563.0
+margin_top = -408.0
+margin_right = 636.0
+margin_bottom = 436.0
+color = Color( 0.905882, 0.905882, 0.905882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="LineEdit" parent="EndOfTurn"]
+anchor_right = 1.0
+margin_left = 41.0
+margin_top = 37.0
+margin_right = -42.0
+margin_bottom = 137.0
+text = "Podsumowanie"
+editable = false
+caret_blink = true
+
+[node name="TextEdit" type="TextEdit" parent="EndOfTurn"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -558.0
+margin_top = 137.0
+margin_right = 558.0
+margin_bottom = 698.0
+syntax_highlighting = true
+draw_tabs = true
+wrap_enabled = true
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewTurnButton" type="Button" parent="EndOfTurn"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 41.0
+margin_top = -115.0
+margin_right = 349.0
+margin_bottom = -24.0
+hint_tooltip = "Kliknij, by użyć wybranej akcji i zaaplikować jej koszta"
+mouse_default_cursor_shape = 2
+text = "Nowa tura"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewBattleButton" type="Button" parent="EndOfTurn"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 372.682
+margin_top = -115.0
+margin_right = 706.682
+margin_bottom = -24.0
+hint_tooltip = "Kliknij, by użyć wybranej akcji i zaaplikować jej koszta"
+mouse_default_cursor_shape = 2
+text = "Nowa bitwa"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="EndOfTurn"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -299.0
+margin_top = -115.0
+margin_right = -42.0
+margin_bottom = -24.0
+mouse_default_cursor_shape = 2
+text = "Wyjdź"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewBattleForm" type="ColorRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -301.0
+margin_top = -213.0
+margin_right = 301.0
+margin_bottom = 213.0
+color = Color( 0.905882, 0.905882, 0.905882, 1 )
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="NewBattleForm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 27.0
+margin_top = 27.0
+margin_right = -27.0
+margin_bottom = -112.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewBattleForm/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 11.0
+margin_top = 14.0
+margin_right = -10.0
+margin_bottom = -2.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="LineEdit" parent="NewBattleForm/ColorRect/VBoxContainer"]
+margin_right = 527.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Wartości uniku i bloku"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dodge" parent="NewBattleForm/ColorRect/VBoxContainer" instance=ExtResource( 26 )]
+title = "Unik"
+
+[node name="Block" parent="NewBattleForm/ColorRect/VBoxContainer" instance=ExtResource( 26 )]
+margin_top = 180.0
+margin_bottom = 271.0
+title = "Blok"
+
+[node name="NewBattleStartButton" type="Button" parent="NewBattleForm"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -163.882
+margin_top = -105.238
+margin_right = -26.8822
+margin_bottom = -14.2378
+hint_tooltip = "Automatycznie zwiększy ilość dostępnych bloków/uników do maksimum"
+text = "Ok"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnIndicators" type="ToolButton" parent="NewBattleForm"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -597.0
+margin_top = -119.0
+margin_right = -442.0
+margin_bottom = 4.0
+action_mode = 0
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Defense" type="Control" parent="NewBattleForm/TurnIndicators"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="NewBattleForm/TurnIndicators/Defense"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Control" parent="NewBattleForm/TurnIndicators"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect2" type="TextureRect" parent="NewBattleForm/TurnIndicators/Attack"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 126.722, 100.387 )
+mouse_filter = 2
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fatigue" type="LineEdit" parent="NewBattleForm"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -86.0
+margin_top = -89.0
+margin_right = 130.0
+margin_bottom = -8.0
+rect_scale = Vector2( 0.728886, 0.728886 )
+text = "3 x"
+editable = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="NewBattleForm/Fatigue"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -122.627
+margin_top = -31.986
+margin_right = 5.37299
+margin_bottom = 15.014
+texture = ExtResource( 8 )
+stretch_mode = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Warning" type="TextEdit" parent="NewBattleForm"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -578.0
+margin_top = -164.0
+margin_bottom = -104.0
+rect_pivot_offset = Vector2( 0, 60.366 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/number_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_readonly = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 14 )
+custom_styles/normal = SubResource( 13 )
+text = "	Wartość zmęczenia jest różna od zera."
+readonly = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_entered" from="." to="." method="_on_MainWindow_focus_entered"]
+[connection signal="gui_input" from="." to="." method="_on_MainWindow_gui_input"]
+[connection signal="gui_input" from="Player" to="Player" method="_on_Player_gui_input"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="changed" from="HpBar" to="HpBar" method="_on_HpBar_changed"]
+[connection signal="gui_input" from="HpBar" to="HpBar" method="_on_HpBar_gui_input"]
+[connection signal="text_entered" from="HpBar/HBoxContainer/Currenthp" to="HpBar" method="_on_Currenthp_text_entered"]
+[connection signal="pressed" from="Fatigue" to="ActionList" method="_on_TokenCluster_pressed" binds= [ "Fatigue" ]]
+[connection signal="pressed" from="Psi" to="ActionList" method="_on_TokenCluster_pressed" binds= [ "Psi" ]]
+[connection signal="pressed" from="Mana" to="ActionList" method="_on_TokenCluster_pressed" binds= [ "Mana" ]]
+[connection signal="pressed" from="Ki" to="ActionList" method="_on_TokenCluster_pressed" binds= [ "Ki" ]]
+[connection signal="pressed" from="Stamina" to="ActionList" method="_on_TokenCluster_pressed" binds= [ "Stamina" ]]
+[connection signal="pressed" from="TurnIndicators" to="TurnIndicators" method="_on_TurnIndicators_pressed"]
+[connection signal="pressed" from="AllActionsButton" to="ActionList" method="_on_AllActionsButton_pressed"]
+[connection signal="pressed" from="SummaryButton" to="." method="_on_SummaryButton_pressed"]
+[connection signal="focus_entered" from="ActionLeft" to="ActionLeft" method="_on_ActionLeft_focus_entered"]
+[connection signal="sb_changed" from="ActionLeft" to="." method="_on_ActionLeft_sb_changed"]
+[connection signal="focus_exited" from="ActionLeft/Editable/LineEdit" to="ActionLeft" method="_on_LineEdit_focus_exited"]
+[connection signal="text_entered" from="ActionLeft/Editable/LineEdit" to="ActionLeft" method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="SideBar/Button" to="SideBar" method="_on_Button_pressed"]
+[connection signal="gui_input" from="SideBar/Avatar" to="SideBar" method="_on_Avatar_gui_input"]
+[connection signal="pressed" from="SideBar/RestButton" to="." method="_on_RestButton_pressed"]
+[connection signal="toggled" from="SideBar/EditButton" to="." method="_on_EditButton_toggled"]
+[connection signal="pressed" from="SideBar/NewTurnButton" to="ActionLeft" method="set_sb" binds= [ 0 ]]
+[connection signal="pressed" from="SideBar/NewBattleButton" to="." method="_on_NewBattleButton_pressed"]
+[connection signal="scroll_started" from="ActionList/ScrollContainer" to="ActionList" method="_on_ScrollContainer_scroll_started"]
+[connection signal="pressed" from="ActionList/ScrollContainer/VBoxContainer/Dodge" to="." method="_on_ActionItem_pressed"]
+[connection signal="pressed" from="ActionList/ScrollContainer/VBoxContainer/Block" to="." method="_on_ActionItem_pressed"]
+[connection signal="pressed" from="ActionList/ScrollContainer/VBoxContainer/ActionItem2" to="." method="_on_ActionItem_pressed"]
+[connection signal="pressed" from="ActionList/ScrollContainer/VBoxContainer/ActionItem3" to="." method="_on_ActionItem_pressed"]
+[connection signal="pressed" from="ActionList/ScrollContainer/VBoxContainer/ActionItem4" to="." method="_on_ActionItem_pressed"]
+[connection signal="pressed" from="ActionList/ScrollContainer/VBoxContainer/ActionItem5" to="." method="_on_ActionItem_pressed"]
+[connection signal="pressed" from="ActionList/ScrollContainer/VBoxContainer/ActionItem6" to="." method="_on_ActionItem_pressed"]
+[connection signal="pressed" from="ActionList/ScrollContainer/VBoxContainer/ActionItem7" to="." method="_on_ActionItem_pressed"]
+[connection signal="pressed" from="ActionList/ScrollContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ActionAddForm/ScrollContainer/Control/AddButton" to="." method="_on_AddButton_pressed"]
+[connection signal="pressed" from="ActionAddForm/ScrollContainer/Control/CancelButton" to="." method="_on_MainWindow_focus_entered"]
+[connection signal="pressed" from="ActionAddForm/ScrollContainer/Control/TurnIndicators" to="ActionAddForm/ScrollContainer/Control/TurnIndicators" method="_on_TurnIndicators_pressed"]
+[connection signal="gui_input" from="ActionAddForm/ScrollContainer/Control/Warning" to="ActionAddForm" method="_on_Warning_gui_input"]
+[connection signal="scrolling" from="ActionAddForm/VScrollBar" to="ActionAddForm" method="_on_VScrollBar_scrolling"]
+[connection signal="pressed" from="TextEditor/OkButton" to="TextEditor" method="_on_OkButton_pressed"]
+[connection signal="pressed" from="TextEditor/CancelButton" to="." method="_on_MainWindow_focus_entered"]
+[connection signal="pressed" from="EndOfTurn/NewTurnButton" to="." method="_on_NewTurnButton_pressed"]
+[connection signal="pressed" from="EndOfTurn/NewBattleButton" to="." method="_on_NewBattleButton_pressed"]
+[connection signal="pressed" from="EndOfTurn/CancelButton" to="." method="_on_MainWindow_focus_entered"]
+[connection signal="value_changed" from="NewBattleForm/ColorRect/VBoxContainer/Dodge" to="NewBattleForm" method="_on_DodgeBlock_value_changed"]
+[connection signal="value_changed" from="NewBattleForm/ColorRect/VBoxContainer/Block" to="NewBattleForm" method="_on_DodgeBlock_value_changed"]
+[connection signal="pressed" from="NewBattleForm/NewBattleStartButton" to="." method="_on_NewBattleStartButton_pressed"]
+[connection signal="pressed" from="NewBattleForm/TurnIndicators" to="NewBattleForm/TurnIndicators" method="_on_TurnIndicators_pressed"]
+[connection signal="gui_input" from="NewBattleForm/Warning" to="NewBattleForm" method="_on_Warning_gui_input"]
