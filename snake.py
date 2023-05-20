@@ -15,6 +15,10 @@ CENTER = 1
 TOP = 2
 BOTTOM = 3
 
+FORWARD = 0
+LEFT = 1
+RIGHT = 2
+
 
 class Circle(pygame.Vector2):
     def __init__(self, x, y, radius):
@@ -26,6 +30,7 @@ class Circle(pygame.Vector2):
         pygame.draw.circle(pygame.display.get_surface(), self.colour, self, self.r, )
 
     def is_colliding_with(self, other):
+        if other is None: return False
         return self.distance_to(other) < self.r + other.r
 
     @classmethod
@@ -35,13 +40,17 @@ class Circle(pygame.Vector2):
         return cls(x, y, radius)
 
     def get_rect(self):
-        return pygame.Rect(self.x - self.r, self.y - self.r, self.r*2, self.r*2)
+        return pygame.Rect(self.x - self.r, self.y - self.r, self.r * 2, self.r * 2)
 
 
 class Fruit(Circle):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
         self.colour = green
+
+    def respawn(self):
+        self.x = random.random() * pygame.display.get_surface().get_rect().width
+        self.y = random.random() * pygame.display.get_surface().get_rect().height
 
 
 class SnakeTail(Circle):
@@ -52,7 +61,7 @@ class SnakeTail(Circle):
         self.tail = None
 
     def draw(self):
-        OUTLINE = int(self.r/2)
+        OUTLINE = int(self.r / 2)
         pygame.draw.circle(pygame.display.get_surface(), self.colour, self, self.r, OUTLINE)
         if self.tail:
             self.tail.draw()
@@ -71,23 +80,33 @@ class SnakeTail(Circle):
             if self.tail:
                 self.tail.move(distance)
 
+def get_decision():
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+        return LEFT
+    elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+        return RIGHT
 
 class Snake(Circle):
-    def __init__(self, x, y, radius):
+    def __init__(self, x, y, radius, decision_function=get_decision):
         super().__init__(x, y, radius)
+        self.get_decision = decision_function
         self.colour = white
         self.tail = None
         self.direction = pygame.Vector2(random.random(), random.random()).normalize()
         self.rotation_power = 5  # distance in size of snake width in witch snake successfully turns back
 
     def move(self, distance):
+        # change direction if key was pressed
         PI = 3.14
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] or keys[pygame.K_a]:
-            self.direction = self.direction.rotate(-(distance*180)/(self.rotation_power*self.r*PI))
-        elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-            self.direction = self.direction.rotate((distance*180)/(self.rotation_power*self.r*PI))
+        decision = self.get_decision()
+        if decision == LEFT:
+            self.direction = self.direction.rotate(-(distance * 180) / (self.rotation_power * self.r * PI))
+        elif decision == RIGHT:
+            self.direction = self.direction.rotate((distance * 180) / (self.rotation_power * self.r * PI))
 
+
+        # move certain distance forward
         if self.tail:
             self.tail.move(distance)
         self.x += self.direction.x * distance
@@ -102,8 +121,7 @@ class Snake(Circle):
         #     self.y += pygame.display.get_surface().get_rect().height
 
     def consume(self, fruit):
-        fruit.x = random.random() * pygame.display.get_surface().get_rect().width
-        fruit.y = random.random() * pygame.display.get_surface().get_rect().height
+        fruit.respawn()
         if self.tail:
             self.tail.append_tail()
         else:
@@ -122,11 +140,26 @@ class Snake(Circle):
             tail = tail.tail
         return count
 
+    def is_colliding_with(self, other):
+        if not isinstance(other, Snake):
+            return super().is_colliding_with(other)
+        if other is not self:
+            if self.is_colliding_with(other.tail):
+                return True
+        if other.tail:
+            tail = other.tail.tail
+            while tail is not None:
+                if self.is_colliding_with(tail):
+                    return True
+                tail = tail.tail
+        return False
+
 
 
 class SnakeGame:
 
-    def __init__(self, size: tuple[int,int]=(480,320), fps: int=60, diameter: int=10, speed: int=8, time_limit: int=60):
+    def __init__(self, size: tuple[int, int] = (480, 320), fps: int = 60, diameter: int = 10, speed: int = 8,
+                 time_limit: int = 60):
         """
         :param size: width and hight of window in pixels
         :param diameter: size of things in pixels
@@ -180,7 +213,7 @@ class SnakeGame:
             pygame.time.wait(333)
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and \
-                        any(event.key == key for key in (pygame.K_p, pygame.K_PAUSE, pygame.K_SPACE, pygame.K_ESCAPE)):
+                        event.key in (pygame.K_p, pygame.K_PAUSE, pygame.K_SPACE, pygame.K_ESCAPE):
                     paused = False
                 if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                     pygame.quit()
@@ -188,16 +221,29 @@ class SnakeGame:
 
     def running(self):
         # initialize game objects
-        fruits = [Fruit.at_random_position(self.SIZE/2) for _ in range(6)]
-        player = Snake.at_random_position(self.SIZE/2)
+        fruits = [Fruit.at_random_position(self.SIZE / 2) for _ in range(6)]
+        def based_on_arrows():
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_LEFT]: return LEFT
+            if keys[pygame.K_RIGHT]: return RIGHT
+            return FORWARD
+        def based_on_wsad():
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_a]: return LEFT
+            if keys[pygame.K_d]: return RIGHT
+            return FORWARD
+        players = [Snake.at_random_position(self.SIZE / 2) for _ in range(1)]
+        players[0].get_decision = based_on_arrows
+        #players[1].get_decision = based_on_wsad
         def draw_board():
             pygame.display.get_surface().fill(black)
-            player.draw()
+            for player in players:
+                player.draw()
             for fruit in fruits:
                 fruit.draw()
 
-        ## READY?
         draw_board()
+        # region READY?
         self.title("READY?", CENTER)
         pygame.display.update()
         ready = False
@@ -209,8 +255,9 @@ class SnakeGame:
                 if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                     pygame.quit()
                     sys.exit()
-        ## GO!
         draw_board()
+        # endregion
+        # region GO!
         tmp = self.font
         self.font = pygame.font.SysFont("monospace", 72, bold=True)
         self.title("GO!", CENTER)
@@ -218,62 +265,69 @@ class SnakeGame:
         pygame.display.update()
         pygame.time.wait(333)
         draw_board()
+        # endregion
 
         # inner main loop
         time_passed = 0
         frames_passed = 0
-        speed = self.SPEED
+        current_speed = self.SPEED
+        score = 0
         while True:
+            # displaying view
+            draw_board()
+            self.title(f"{int(time_passed / 60)}:{time_passed % 60:02d}" if time_passed >= 60 else f"{time_passed}")
+            pygame.display.update()
+
             # pygame "must-have" + pausing
             self.clock.tick(self.FPS)
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.KEYDOWN and \
-                        any(event.key == key for key in (pygame.K_p, pygame.K_PAUSE, pygame.K_SPACE)):
+                        event.key in (pygame.K_p, pygame.K_PAUSE, pygame.K_SPACE):
                     self.pause_with_message("PAUSED")
+                    draw_board()
                 elif event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
 
-            # displaying view
-            draw_board()
-            self.title(f"{int(time_passed/60)}:{time_passed%60:02d}" if time_passed>=60 else f"{time_passed}", TOP)
-            pygame.display.update()
+            for player in players:
+                player.move(self.SIZE * current_speed / self.FPS)
+                # region COLLISION_CHECK
+                # with fruits
+                for fruit in fruits:
+                    if fruit.is_colliding_with(player):
+                        player.consume(fruit)
+                # with borders
+                if not pygame.display.get_surface().get_rect().contains(player.get_rect()):
+                    score += player.length()
+                    players.remove(player)
+                    print("Out of border")
+                # with tail
+                for pl in players:
+                    if player.is_colliding_with(pl):
+                        score += player.length()
+                        players.remove(player)
+                        print("Clash with tail")
+                # endregion
+            if len(players) == 0:
+                return score
 
-            player.move(self.SIZE * speed / self.FPS)
-
-            # collision
-            # with fruits
-            for fruit in fruits:
-                if fruit.is_colliding_with(player):
-                    player.consume(fruit)
-            # with borders
-            if not pygame.display.get_surface().get_rect().contains(player.get_rect()):
-                return player.length()
-            # with tail
-            if player.tail:
-                tail = player.tail.tail
-                while tail is not None:
-                    if player.is_colliding_with(tail):
-                        return player.length()
-                    tail = tail.tail
-
-
-            # time counter
+            # update time counter
             frames_passed = (frames_passed + 1) % self.FPS
             if frames_passed == 0:
                 time_passed += 1
             if time_passed > self.TIME_LIMIT:
-                return player.length()
-            speed = self.SPEED + 2* int(1+time_passed/10)
-            player.rotation_power = 5 + int(time_passed/10)
+                return score + sum(player.length() for player in players)
+
+            # something to make it more fun!
+            current_speed = self.SPEED + 2 * int(1 + time_passed / 10)
+            for player in players:
+                player.rotation_power = 5 + int(time_passed / 10)
 
 
 if __name__ == "__main__":
     game = SnakeGame()
-
     # main loop
     while True:
         score = game.running()
         game.pause_with_message(f"GAME OVER\nSCORE: {score}")
-
