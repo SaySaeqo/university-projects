@@ -1,5 +1,2 @@
-# Projects
-All biggest projects for student times
-and some more.
-
-All 100% by me only.
+# University projects
+Batch of some more relevant, selfmade projects made as part of the course of study at the GdanskTech (Politechnika Gdańska).
