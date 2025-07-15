@@ -3,9 +3,9 @@
 				# Author:		Tomasz Piwowski (saysaeqo@gmail.com)
 				# Realese Date:		26.05.2020
 				# Last Modiefied By:	Tomasz Piwowski (saysaeqo@gmail.com)
-				# Last Modified On:	26.05.2020
+				# Last Modified On:	15.07.2025
 				#
-				# Version:		1.0
+				# Version:		1.1
 				# Description:		Program do prostej obróbki grafiki przeznaczonej do
 				# Opis			umieszczenia w sieci.
 				#
@@ -13,7 +13,7 @@
 				# contact # the Free Software Foundation for a copy)
 ####################### ZMIENNE GLOBALNE ##################################################################################
 
-VERSION=1.0
+VERSION=1.1
 DIR=`dirname $0`
 SOURCE="$DIR/example.jpeg"
 DESTINY="$DIR/works/avatar_$$.jpeg"
@@ -99,7 +99,7 @@ defaults(){
     if [[ $MAGICK == "empty" ]]
        then
 	    
-	zenity --question --title "ImageMagick" \
+	zenity --question --title "Lokalizacja ImageMagick" \
 	--text "\nCzy korzystasz z zewnętrznego pliku z programem ImageMagick (https://imagemagick.org/script/download.php)?\n\t-wybierz 'NIE/NO' \
 	gdy linia poleceń przyjmuje bezpośrednio komendę np. 'display logo:'" \
 	--width 600
@@ -316,6 +316,11 @@ color(){
 }
     
 ############################### MECHANIKA ##############################################
+
+if [[ ! -d $DIR/works ]]
+then
+	mkdir -p $DIR/works
+fi
 
 if [ $# -ne 0 ]
 then
@@ -738,7 +743,7 @@ else
 							NAME="${NAME}."`echo $SOURCE | sed "s#^.*\.##"`
 							echo $DIRECTORY
 						fi
-						cp $DESTINY ${DIRECTORY}/$NAME
+						cp $DESTINY "${DIRECTORY}/$NAME"
 						rm $DESTINY
 					fi
 					;;
@@ -763,5 +768,7 @@ xdotool search --name "ImageMagick: .*" windowkill %@ 2>/dev/null
 
 #$MAGICK montage -geometry 600x600\>+10 -shadow -background none -label "%f" -frame 5 $SOURCE $DESTINY show:
 #rm -r $DIR/works/*
+
+rmdir $DIR/works
 
 echo -e "---------------\nKoniec Programu\n---------------"
