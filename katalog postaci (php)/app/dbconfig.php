@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Local database's interface
+ */
 class Database
 {
     protected $data_dir = __DIR__."/mydb/";
