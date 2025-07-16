@@ -1,0 +1,3 @@
+# Virtual word game (Wirtualny Świat) - console edition
+Simple console game about surving at the savanna as a human. It is written in C++. You can move using arrows. At game area are spawned randomly different animals and plant. Each of them can move and breed according to their own conditions and logic. Game is turn based and all info about specific turn is printed below game board to std output.
+Game was created for educational purposes.
