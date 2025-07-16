@@ -1,4 +1,4 @@
-# Disk Operation Simulation - BTree
+# Disk Operation Simulator - BTree
 More complex experiment for testing disk operations for data saved as a part of BTree. This codebase includes: 
 - simulated computer memory as byte structure in `Memory` file
 - memory interface written using Java
